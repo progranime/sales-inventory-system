@@ -19,6 +19,7 @@ const Index = () => {
 
   return (
     <nav className='navigation'>
+      <div className='navigation__overlay'></div>
       <div className='navigation__container'>
         <div className='navigation__user'>
           <Link to='/'>
