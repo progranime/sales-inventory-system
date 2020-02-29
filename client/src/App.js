@@ -1,26 +1,59 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+
+import Navigation from './components/Navigation/Index'
+import Layout from './components/Layout/Index'
+
+import {
+  Home,
+  StocksAvailable,
+  StocksItem,
+  StocksPurchase,
+  Orders,
+  Suppliers,
+  Customers,
+  Reports
+} from './routes/Index'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <div className='App'>
+        <Navigation />
+        <Layout>
+          <Switch>
+            <Route path='/stocks/purchase'>
+              <StocksPurchase />
+            </Route>
+            <Route path='/stocks/available'>
+              <StocksAvailable />
+            </Route>
+            <Route path='/stocks/item'>
+              <StocksItem />
+            </Route>
+            <Route path='/stocks/purchase'>
+              <StocksPurchase />
+            </Route>
+            <Route path='/orders'>
+              <Orders />
+            </Route>
+            <Route path='/suppliers'>
+              <Suppliers />
+            </Route>
+            <Route path='/customers'>
+              <Customers />
+            </Route>
+            <Route path='/reports'>
+              <Reports />
+            </Route>
+            <Route path='/'>
+              <Home />
+            </Route>
+          </Switch>
+        </Layout>
+      </div>
+    </Router>
+  )
 }
 
-export default App;
+export default App

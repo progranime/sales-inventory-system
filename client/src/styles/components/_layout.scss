@@ -1,0 +1,7 @@
+$navigationWidth: 200px;
+
+.layout {
+  width: calc(100% - #{$navigationWidth});
+  margin-left: $navigationWidth;
+  padding: $spacer-2;
+}

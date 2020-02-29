@@ -1,0 +1,8 @@
+export { default as Customers } from './Customers/Index.js'
+export { default as Home } from './Home/Index.js'
+export { default as Orders } from './Orders/Index.js'
+export { default as Reports } from './Reports/Index.js'
+export { default as StocksAvailable } from './Stocks/Available/Index.js'
+export { default as StocksItem } from './Stocks/Item/Index.js'
+export { default as StocksPurchase } from './Stocks/Purchase/Index.js'
+export { default as Suppliers } from './Suppliers/Index.js'

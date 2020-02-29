@@ -1,0 +1,29 @@
+// color palette
+/*
+	#1db954
+	#ffffff
+	#191414
+	#b3b3b3
+	#282828
+	#191919
+*/
+
+// color system
+
+$gray-500: #b3b3b3 !default;
+$gray-700: #282828 !default;
+$gray-800: #191414 !default;
+$gray-900: #191919 !default;
+
+$black: $gray-900 !default;
+$primary: #1db954 !default;
+$secondary: $gray-500 !default;
+
+// spacer
+
+$spacer-1: 5px;
+$spacer-2: 10px;
+$spacer-3: 15px;
+$spacer-4: 20px;
+$spacer-5: 25px;
+$spacer-6: 30px;

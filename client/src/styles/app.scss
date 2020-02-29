@@ -1,0 +1,14 @@
+// override default settings
+@import './global/variable';
+
+// import bootstrap
+@import './node_modules/bootstrap/scss/bootstrap';
+
+// global
+@import './global/global';
+@import './global/utility';
+
+// components
+@import './components/layout';
+@import './components/list';
+@import './components/navigation';
