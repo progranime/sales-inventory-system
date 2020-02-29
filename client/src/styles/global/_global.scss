@@ -3,7 +3,12 @@ html {
   font-family: 'Roboto';
   font-size: 14px;
 }
+
 body {
   background-color: $black;
   color: $white;
+}
+
+hr {
+  border-color: $primary;
 }
