@@ -1,8 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import Navigation from './components/Navigation/Index'
-import Layout from './components/Layout/Index'
+import { Navigation, Layout } from './components'
 
 import {
   Home,
@@ -15,7 +14,7 @@ import {
   Reports,
   AuthLogin,
   AuthRegister
-} from './routes/Index'
+} from './routes'
 
 function App() {
   return (
