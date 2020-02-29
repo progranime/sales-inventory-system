@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 
-import CustomerForm from '../../containers/CustomerForm/'
-
 class Index extends Component {
   render() {
     return (
       <div>
-        <CustomerForm />
+        <p>Register Page</p>
       </div>
     )
   }
