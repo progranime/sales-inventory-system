@@ -6929,7 +6929,7 @@ button.bg-dark:focus {
 .text-nowrap {
   white-space: nowrap !important; }
 
-.text-truncate {
+.text-truncate, .navigation__user-details p {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap; }
@@ -7148,7 +7148,8 @@ a.text-dark:hover, a.text-dark:focus {
 
 *,
 html {
-  font-family: 'Roboto'; }
+  font-family: 'Roboto';
+  font-size: 14px; }
 
 body {
   background-color: #191919;
@@ -7171,10 +7172,32 @@ body {
   background-color: #282828;
   top: 0;
   left: 0; }
+  .navigation__user {
+    padding: 10px 0;
+    border-bottom: 1px solid #b3b3b3;
+    margin: 0 10px; }
+    .navigation__user img {
+      width: 120px;
+      height: 120px;
+      border-radius: 100%;
+      display: block;
+      margin: 0 auto;
+      border: 3px solid #1db954; }
+  .navigation__user-details {
+    margin: 5px 0px; }
+    .navigation__user-details p {
+      margin: 0; }
+    .navigation__user-details .description {
+      font-size: 12px; }
   .navigation__list {
     margin: 0;
     padding: 0;
-    list-style: none; }
+    list-style: none;
+    margin-top: 10px; }
+    .navigation__list li:nth-child(1) span {
+      left: -3px; }
+    .navigation__list li:nth-child(7) span {
+      left: -3px; }
     .navigation__list a {
       color: #b3b3b3;
       display: block;
@@ -7182,5 +7205,11 @@ body {
       padding: 10px; }
       .navigation__list a:hover {
         background-color: #191414; }
+      .navigation__list a svg {
+        width: 30px !important;
+        position: relative;
+        left: -7px; }
+      .navigation__list a span {
+        position: relative; }
     .navigation__list .list {
       margin-left: 10px; }

@@ -12,7 +12,9 @@ import {
   Orders,
   Suppliers,
   Customers,
-  Reports
+  Reports,
+  AuthLogin,
+  AuthRegister
 } from './routes/Index'
 
 function App() {
@@ -22,6 +24,12 @@ function App() {
         <Navigation />
         <Layout>
           <Switch>
+            <Route path='/auth/register'>
+              <AuthRegister />
+            </Route>
+            <Route path='/auth/login'>
+              <AuthLogin />
+            </Route>
             <Route path='/stocks/purchase'>
               <StocksPurchase />
             </Route>
