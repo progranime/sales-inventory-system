@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Card } from '../../components'
+import { Card } from '../../components/UI'
 
 class Index extends Component {
   render() {

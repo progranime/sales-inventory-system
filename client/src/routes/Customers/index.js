@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 
-import CustomerForm from '../../containers/CustomerForm'
+import CustomerContainer from '../../containers/CustomerContainer'
 
 class Index extends Component {
   render() {
     return (
       <div>
-        <CustomerForm />
+        <CustomerContainer />
       </div>
     )
   }

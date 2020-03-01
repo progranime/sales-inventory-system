@@ -1,4 +1,4 @@
-export { default as FloatingAction } from './Button/FloatingAction'
+export { default as FloatingAction } from './FloatingAction'
 export { default as Card } from './Card'
 export { default as Input } from './Input'
 export { default as Layout } from './Layout'
