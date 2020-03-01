@@ -6,6 +6,7 @@
 
 // global
 @import './global/global';
+@import './global/typography';
 @import './global/utility';
 
 // components
@@ -14,3 +15,4 @@
 @import './components/layout';
 @import './components/list';
 @import './components/navigation';
+@import './components/table';

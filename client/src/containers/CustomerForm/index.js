@@ -1,6 +1,54 @@
 import React, { Component } from 'react'
+import BootstrapTable from 'react-bootstrap-table-next'
+import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
 
 import { Input, Card } from '../../components'
+
+const { SearchBar } = Search
+
+const columns = [
+  {
+    dataField: 'id',
+    text: 'Id',
+    sort: true
+  },
+  {
+    dataField: 'name',
+    text: 'Name',
+    sort: true
+  },
+  {
+    dataField: 'contact',
+    text: 'Contact',
+    sort: true
+  },
+  {
+    dataField: 'gender',
+    text: 'Gender',
+    sort: true
+  }
+]
+
+const products = [
+  {
+    id: 1,
+    name: 'Jeremy Espinosa',
+    contact: '09157978892',
+    gender: 'Male'
+  },
+  {
+    id: 2,
+    name: 'Giancarlo Espinosa',
+    contact: '09157978892',
+    gender: 'Male'
+  },
+  {
+    id: 3,
+    name: 'Moira Espinosa',
+    contact: '09157978892',
+    gender: 'Female'
+  }
+]
 
 class Index extends Component {
   constructor(props) {
@@ -35,17 +83,34 @@ class Index extends Component {
   render() {
     return (
       <div className='row'>
-        <div className='col-sm-6'>
-          <Card>
+        <div className='col-sm-12'>
+          <Card header='Customer Details'>
+            <ToolkitProvider
+              keyField='id'
+              data={products}
+              columns={columns}
+              search
+            >
+              {props => (
+                <div className='react-bootstrap-table-custom'>
+                  <SearchBar {...props.searchProps} />
+                  <BootstrapTable
+                    {...props.baseProps}
+                    bordered={false}
+                    noDataIndication='Looking for customers ...'
+                  />
+                </div>
+              )}
+            </ToolkitProvider>
+          </Card>
+        </div>
+        <div className='col-sm-12 d-none'>
+          <Card header='Customer Form'>
             <form
               className='form'
               method='post'
               onSubmit={this.onSubmit.bind(this)}
             >
-              <h4>Customer Form</h4>
-
-              <hr />
-
               <div className='form-group'>
                 <label htmlFor='name'>Name</label>
                 <Input name='name' id='name' ref={this.$name} />
@@ -83,13 +148,6 @@ class Index extends Component {
                 </button>
               </div>
             </form>
-          </Card>
-        </div>
-        <div className='col-sm-6'>
-          <Card>
-            <h4>Customer Details</h4>
-
-            <hr />
           </Card>
         </div>
       </div>

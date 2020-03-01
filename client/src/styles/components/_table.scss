@@ -1,0 +1,36 @@
+.table {
+}
+
+// custom
+
+.react-bootstrap-table-custom {
+  .search-label {
+    float: right;
+  }
+  .table {
+    tr,
+    td,
+    th {
+      //   color: $white;
+    }
+
+    thead {
+      th {
+        border-top: none;
+      }
+    }
+
+    tbody {
+      tr {
+        &:nth-child(even) {
+          background-color: $gray-700;
+          color: $white;
+        }
+      }
+    }
+  }
+
+  .react-bs-table-no-data {
+    text-align: center;
+  }
+}

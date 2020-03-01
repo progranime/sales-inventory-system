@@ -1,5 +1,13 @@
 .card {
-  background-color: $gray-700;
+  background-color: $gray-100;
   padding: $spacer-3;
-  box-shadow: 3px 3px 5px #000;
+  box-shadow: 3px 3px 10px #{$gray-200};
+
+  &__header {
+    .title {
+      border-bottom: 1px solid #{$primary};
+      font-size: $font-xl;
+      color: $primary;
+    }
+  }
 }

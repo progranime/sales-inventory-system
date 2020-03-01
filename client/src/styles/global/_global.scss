@@ -5,10 +5,14 @@ html {
 }
 
 body {
-  background-color: $black;
-  color: $white;
+  background-color: $white;
+  color: $gray-900;
 }
 
 hr {
   border-color: $primary;
+}
+
+[class*='col-'] {
+  margin-bottom: $spacer-3;
 }
