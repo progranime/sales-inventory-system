@@ -13,7 +13,7 @@ import {
   faWarehouse
 } from '@fortawesome/free-solid-svg-icons'
 
-const index = () => {
+const Index = () => {
   const [isOpen, setIsOpen] = useState(false)
   const toggle = () => setIsOpen(!isOpen)
 
@@ -95,4 +95,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index
