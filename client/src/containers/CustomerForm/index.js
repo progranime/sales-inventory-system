@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import BootstrapTable from 'react-bootstrap-table-next'
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
-import { Input, Card } from '../../components'
+import { Input, Card, FloatingAction } from '../../components'
 
 const { SearchBar } = Search
 
@@ -82,74 +84,80 @@ class Index extends Component {
 
   render() {
     return (
-      <div className='row'>
-        <div className='col-sm-12'>
-          <Card header='Customer Details'>
-            <ToolkitProvider
-              keyField='id'
-              data={products}
-              columns={columns}
-              search
-            >
-              {props => (
-                <div className='react-bootstrap-table-custom'>
-                  <SearchBar {...props.searchProps} />
-                  <BootstrapTable
-                    {...props.baseProps}
-                    bordered={false}
-                    noDataIndication='Looking for customers ...'
+      <div>
+        <div className='row'>
+          <div className='col-sm-12'>
+            <Card header='Customer Details'>
+              <ToolkitProvider
+                keyField='id'
+                data={products}
+                columns={columns}
+                search
+              >
+                {props => (
+                  <div className='react-bootstrap-table-custom'>
+                    {/* <SearchBar {...props.searchProps} /> */}
+                    <BootstrapTable
+                      {...props.baseProps}
+                      bordered={false}
+                      noDataIndication='Looking for customers ...'
+                    />
+                  </div>
+                )}
+              </ToolkitProvider>
+            </Card>
+          </div>
+          <div className='col-sm-12 d-none'>
+            <Card header='Customer Form'>
+              <form
+                className='form'
+                method='post'
+                onSubmit={this.onSubmit.bind(this)}
+              >
+                <div className='form-group'>
+                  <label htmlFor='name'>Name</label>
+                  <Input name='name' id='name' ref={this.$name} />
+                </div>
+                <div className='form-group'>
+                  <label htmlFor='contact'>Contact</label>
+                  <Input
+                    type='tel'
+                    name='contact'
+                    id='contact'
+                    ref={this.$contact}
                   />
                 </div>
-              )}
-            </ToolkitProvider>
-          </Card>
-        </div>
-        <div className='col-sm-12 d-none'>
-          <Card header='Customer Form'>
-            <form
-              className='form'
-              method='post'
-              onSubmit={this.onSubmit.bind(this)}
-            >
-              <div className='form-group'>
-                <label htmlFor='name'>Name</label>
-                <Input name='name' id='name' ref={this.$name} />
-              </div>
-              <div className='form-group'>
-                <label htmlFor='contact'>Contact</label>
-                <Input
-                  type='tel'
-                  name='contact'
-                  id='contact'
-                  ref={this.$contact}
-                />
-              </div>
-              <div className='form-group'>
-                <label htmlFor='address'>Address</label>
-                <Input name='address' id='address' ref={this.$address} />
-              </div>
-              <div className='form-group'>
-                <label htmlFor='gender'>Gender</label>
-                <select name='gender' id='gender' className='form-control'>
-                  <option value='1'>Male</option>
-                  <option value='2'>Female</option>
-                </select>
-              </div>
+                <div className='form-group'>
+                  <label htmlFor='address'>Address</label>
+                  <Input name='address' id='address' ref={this.$address} />
+                </div>
+                <div className='form-group'>
+                  <label htmlFor='gender'>Gender</label>
+                  <select name='gender' id='gender' className='form-control'>
+                    <option value='1'>Male</option>
+                    <option value='2'>Female</option>
+                  </select>
+                </div>
 
-              <div className='form-group text-right'>
-                <button
-                  type='reset'
-                  className='btn btn-secondary btn--wide mr-2'
-                >
-                  Cancel
-                </button>
-                <button type='submit' className='btn btn-primary btn--wide'>
-                  Save
-                </button>
-              </div>
-            </form>
-          </Card>
+                <div className='form-group text-right'>
+                  <button
+                    type='reset'
+                    className='btn btn-secondary btn--wide mr-2'
+                  >
+                    Cancel
+                  </button>
+                  <button type='submit' className='btn btn-primary btn--wide'>
+                    Save
+                  </button>
+                </div>
+              </form>
+            </Card>
+          </div>
         </div>
+
+        <FloatingAction>
+          <FontAwesomeIcon icon={faPlus} />
+        </FloatingAction>
       </div>
     )
   }

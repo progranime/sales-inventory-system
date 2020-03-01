@@ -1,0 +1,23 @@
+.floating-action {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background-color: $primary;
+  color: $white;
+  cursor: pointer;
+
+  &__container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover {
+    transition: 0.2s ease-in-out;
+    box-shadow: 3px 3px 3px $gray-500;
+  }
+}
