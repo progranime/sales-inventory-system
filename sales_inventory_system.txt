@@ -1,0 +1,88 @@
+https://www.youtube.com/watch?v=ahL8p9HOaOE
+
+https://uploads-ssl.webflow.com/5bfaed87d8f1e3d1396c3849/5c45eba8e00656bacb955da7_32%20-%20UI%20Kit.png
+https://i.pinimg.com/originals/b5/86/97/b586979c84ffc01a084dd75406e1934c.png
+
+Sales and Inventory System
+	- Login
+	- Register
+	- Forms for Adding/Updating/Deleting Inventory
+		- Set the fields for the Inventory
+			- id
+			- product_name
+			- quantity
+			- price
+			- date_updated
+			- date_created
+	- Forms for buying the Product
+		- id
+		- sold_to
+		- quantity
+		- price_bought
+		- income
+		- status
+			- paid
+			- pending
+			- in progress
+		- date_updated
+		- date_created
+
+
+
+LPE Sales and Inventory System
+
+Requirements:
+	- Modules
+		- Customer
+			- id, name, gender, remarks, date_updated, date_created
+			- customer list
+			- reports per Customer
+		- Employee
+			- id, name,gender, position (superadmin, admin, user), username,password, status (active,inactive)
+		- Supplier
+			- id, name, date_updated, date_created
+			- list of suppliers
+		-Inventory
+			- list of all stocks
+			- id, item_id,item_name,description, category(soap, capsule), quantity, unit_price, revenue, original_price, date_updated, updated_by, date_created
+
+
+
+Requirements:
+	- Registration
+		- All registered user is an admin of their own System
+		- fields: id, name, email, password, date_created
+		- optional:
+			- validate the email before login
+	- Login
+		- Input email and password
+	- Dashboard
+		- summary of reports
+			- Order of the month
+			- Lowest stocks
+			- Customer bought many products
+			- Total Revenue
+	- Stocks
+		- Purchase
+			- fields: id, item (dropdown), quantity, supplier(dropdown), price, total_price, date_received, date_updated, date_created
+			- optional: can create multiple purchase
+		- Available
+			- show the list of stocks
+			- view of items only
+		- Item
+			- fields: id, name, description, original_price, srp, date_updated, date_created
+			- CRUD of items that will be sold
+	- Order
+		- id, customer (dropdown), item (dropdown), total_stocks (readonly will change depends on item), quantity, srp (automatic), discount_price, total_price, revenue
+	- Suppliers
+		- CRUD suppliers
+			- fields: id, name, contact, address, date_updated, date_created
+	- Customer
+		- CRUD customers
+			- fields: id, name, contact, address, gender, is_member, date_updated, date_created
+	- Reports
+		- Can generate PDF
+			- show monthly/yearly (date from to) sold items
+
+
+2980 - 980 = 2000 - 1490 = 510
