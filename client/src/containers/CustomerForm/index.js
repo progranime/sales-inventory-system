@@ -4,9 +4,9 @@ import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
-import { Input, Card, FloatingAction } from '../../components'
+import { Input, Card, FloatingAction, Modal } from '../../components'
 
-const { SearchBar } = Search
+// const { SearchBar } = Search
 
 const columns = [
   {
@@ -61,7 +61,8 @@ class Index extends Component {
         contact: '',
         address: '',
         gender: 1
-      }
+      },
+      isModalOpen: false
     }
     this.$name = React.createRef()
     this.$contact = React.createRef()
@@ -70,7 +71,6 @@ class Index extends Component {
 
   onSubmit = e => {
     e.preventDefault()
-
     let customerDetails = {
       name: this.$name.current.value,
       contact: this.$contact.current.value,
@@ -79,6 +79,14 @@ class Index extends Component {
 
     this.setState({
       customerDetails
+    })
+  }
+
+  modalHandler = () => {
+    this.setState(prevState => {
+      return {
+        isModalOpen: !prevState.isModalOpen
+      }
     })
   }
 
@@ -107,57 +115,57 @@ class Index extends Component {
               </ToolkitProvider>
             </Card>
           </div>
-          <div className='col-sm-12 d-none'>
-            <Card header='Customer Form'>
-              <form
-                className='form'
-                method='post'
-                onSubmit={this.onSubmit.bind(this)}
-              >
-                <div className='form-group'>
-                  <label htmlFor='name'>Name</label>
-                  <Input name='name' id='name' ref={this.$name} />
-                </div>
-                <div className='form-group'>
-                  <label htmlFor='contact'>Contact</label>
-                  <Input
-                    type='tel'
-                    name='contact'
-                    id='contact'
-                    ref={this.$contact}
-                  />
-                </div>
-                <div className='form-group'>
-                  <label htmlFor='address'>Address</label>
-                  <Input name='address' id='address' ref={this.$address} />
-                </div>
-                <div className='form-group'>
-                  <label htmlFor='gender'>Gender</label>
-                  <select name='gender' id='gender' className='form-control'>
-                    <option value='1'>Male</option>
-                    <option value='2'>Female</option>
-                  </select>
-                </div>
-
-                <div className='form-group text-right'>
-                  <button
-                    type='reset'
-                    className='btn btn-secondary btn--wide mr-2'
-                  >
-                    Cancel
-                  </button>
-                  <button type='submit' className='btn btn-primary btn--wide'>
-                    Save
-                  </button>
-                </div>
-              </form>
-            </Card>
-          </div>
         </div>
 
-        <FloatingAction>
+        <FloatingAction onClick={this.modalHandler.bind(this)}>
           <FontAwesomeIcon icon={faPlus} />
         </FloatingAction>
+
+        <Modal
+          isOpen={this.state.isModalOpen}
+          toggle={this.modalHandler.bind(this)}
+          title='Customer Details'
+        >
+          <form
+            className='form'
+            method='post'
+            onSubmit={this.onSubmit.bind(this)}
+          >
+            <div className='form-group'>
+              <label htmlFor='name'>Name</label>
+              <Input name='name' id='name' ref={this.$name} />
+            </div>
+            <div className='form-group'>
+              <label htmlFor='contact'>Contact</label>
+              <Input
+                type='tel'
+                name='contact'
+                id='contact'
+                ref={this.$contact}
+              />
+            </div>
+            <div className='form-group'>
+              <label htmlFor='address'>Address</label>
+              <Input name='address' id='address' ref={this.$address} />
+            </div>
+            <div className='form-group'>
+              <label htmlFor='gender'>Gender</label>
+              <select name='gender' id='gender' className='form-control'>
+                <option value='1'>Male</option>
+                <option value='2'>Female</option>
+              </select>
+            </div>
+
+            <div className='form-group text-right'>
+              <button type='reset' className='btn btn-secondary btn--wide mr-2'>
+                Cancel
+              </button>
+              <button type='submit' className='btn btn-primary btn--wide'>
+                Save
+              </button>
+            </div>
+          </form>
+        </Modal>
       </div>
     )
   }

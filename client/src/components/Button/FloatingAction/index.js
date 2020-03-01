@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const index = props => {
   return (
-    <div className='floating-action'>
+    <div className='floating-action' onClick={props.onClick}>
       <div className='floating-action__container'>{props.children}</div>
     </div>
   )
