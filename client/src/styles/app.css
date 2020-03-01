@@ -7184,6 +7184,9 @@ hr {
   left: 0;
   background-size: cover;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://images.pexels.com/photos/1235398/pexels-photo-1235398.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"); }
+  .navigation__container {
+    overflow-y: auto;
+    height: 100%; }
   .navigation__user {
     padding: 10px 0;
     border-bottom: 1px solid #b3b3b3;

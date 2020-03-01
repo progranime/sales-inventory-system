@@ -1,7 +1,7 @@
 import React from 'react'
 
-const Index = props => {
+const index = props => {
   return <div className='layout'>{props.children}</div>
 }
 
-export default Index
+export default index
