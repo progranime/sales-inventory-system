@@ -42,7 +42,7 @@ const Index = () => {
             </Link>
           </li>
           <li>
-            <Link to='/stocks' onClick={toggle}>
+            <Link to='/stocks/purchase' onClick={toggle}>
               <FontAwesomeIcon icon={faWarehouse} />
               <span>Stocks</span>
             </Link>
