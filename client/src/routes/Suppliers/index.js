@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
 
+import SupplierContainer from '../../containers/SupplierContainer'
 class Index extends Component {
   render() {
-    return (
-      <div>
-        <p>Suppliers Page</p>
-      </div>
-    )
+    return <SupplierContainer />
   }
 }
 

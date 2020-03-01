@@ -1,17 +1,6 @@
 import React from 'react'
 
-import { Input, Select } from '../../UI'
-
-const genderOptions = [
-  {
-    value: 1,
-    text: 'Male'
-  },
-  {
-    value: 2,
-    text: 'Female'
-  }
-]
+import { Input } from '../../UI'
 
 const index = props => {
   return (
@@ -23,22 +12,12 @@ const index = props => {
 
       <div className='form-group'>
         <label htmlFor='contact'>Contact</label>
-        <Input type='tel' name='contact' id='contact' ref={props.refContact} />
+        <Input name='contact' id='contact' ref={props.refContact} />
       </div>
 
       <div className='form-group'>
         <label htmlFor='address'>Address</label>
         <Input name='address' id='address' ref={props.refAddress} />
-      </div>
-
-      <div className='form-group'>
-        <label htmlFor='gender'>Gender</label>
-        <Select
-          name='gender'
-          id='gender'
-          items={genderOptions}
-          ref={props.refGender}
-        />
       </div>
 
       <div className='form-group text-right'>

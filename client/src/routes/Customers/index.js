@@ -4,11 +4,7 @@ import CustomerContainer from '../../containers/CustomerContainer'
 
 class Index extends Component {
   render() {
-    return (
-      <div>
-        <CustomerContainer />
-      </div>
-    )
+    return <CustomerContainer />
   }
 }
 

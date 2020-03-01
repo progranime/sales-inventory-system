@@ -23,8 +23,8 @@ const columns = [
     sort: true
   },
   {
-    dataField: 'gender',
-    text: 'Gender',
+    dataField: 'address',
+    text: 'Address',
     sort: true
   }
 ]
@@ -34,26 +34,26 @@ const data = [
     id: 1,
     name: 'Jeremy Espinosa',
     contact: '09157978892',
-    gender: 'Male'
+    address: 'Pasig'
   },
   {
     id: 2,
     name: 'Giancarlo Espinosa',
     contact: '09157978892',
-    gender: 'Male'
+    address: 'Pasig'
   },
   {
     id: 3,
     name: 'Moira Espinosa',
     contact: '09157978892',
-    gender: 'Female'
+    address: 'Marikina'
   }
 ]
 
 class index extends Component {
   render() {
     return (
-      <Card header='Customer Details'>
+      <Card header='Supplier Details'>
         <ToolkitProvider keyField='id' data={data} columns={columns} search>
           {props => (
             <div className='react-bootstrap-table-custom'>

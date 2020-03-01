@@ -2,39 +2,42 @@ import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
-import CustomerForm from '../../components/Customer/Form'
-import CustomerTable from '../../components/Customer/Table'
+import SupplierForm from '../../components/Supplier/Form'
+import SupplierTable from '../../components/Supplier/Table'
 import { FloatingAction, Modal } from '../../components/UI'
 
-class index extends Component {
+export class index extends Component {
   constructor(props) {
     super(props)
+
     this.state = {
-      customerData: {
+      supplierData: {
         name: '',
         contact: '',
-        address: '',
-        gender: 1
-      }
+        address: ''
+      },
+      isModalOpen: false
     }
+
     this.$name = React.createRef()
     this.$contact = React.createRef()
     this.$address = React.createRef()
-    this.$gender = React.createRef()
   }
 
   onSubmit = e => {
     e.preventDefault()
-    let customerData = {
+
+    let supplierData = {
       name: this.$name.current.value,
       contact: this.$contact.current.value,
-      address: this.$address.current.value,
-      gender: this.$gender.current.value
+      address: this.$address.current.value
     }
 
     this.setState({
-      customerData
+      supplierData
     })
+
+    console.log('this: ', supplierData)
   }
 
   modalHandler = () => {
@@ -48,21 +51,19 @@ class index extends Component {
   render() {
     return (
       <div>
-        <CustomerTable />
+        <SupplierTable />
         <Modal
           isOpen={this.state.isModalOpen}
           toggle={this.modalHandler.bind(this)}
-          title='Customer Details'
+          title='Supplier Details'
         >
-          <CustomerForm
+          <SupplierForm
             onSubmit={this.onSubmit.bind(this)}
             refName={this.$name}
             refContact={this.$contact}
             refAddress={this.$address}
-            refGender={this.$gender}
           />
         </Modal>
-
         <FloatingAction onClick={this.modalHandler.bind(this)}>
           <FontAwesomeIcon icon={faPlus} />
         </FloatingAction>
