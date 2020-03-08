@@ -1,4 +1,4 @@
-import { CREATE_CUSTOMER } from '../types'
+import { CREATE_CUSTOMER, CREATE_CUSTOMER_ERROR } from '../types'
 
 const initState = {
   customer: [],
@@ -50,6 +50,9 @@ const customerReducer = (state = initState, action) => {
   switch (action.type) {
     case CREATE_CUSTOMER:
       console.log('create customer: ', action.customer)
+      return state
+    case CREATE_CUSTOMER_ERROR:
+      console.log('create customer error ', action.error)
       return state
     default:
       return state
