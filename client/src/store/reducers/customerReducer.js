@@ -1,4 +1,7 @@
+import { CREATE_CUSTOMER } from '../types'
+
 const initState = {
+  customer: [],
   customers: [
     {
       id: 1,
@@ -44,7 +47,13 @@ const initState = {
 }
 
 const customerReducer = (state = initState, action) => {
-  return state
+  switch (action.type) {
+    case CREATE_CUSTOMER:
+      console.log('create customer: ', action.customer)
+      return state
+    default:
+      return state
+  }
 }
 
 export default customerReducer

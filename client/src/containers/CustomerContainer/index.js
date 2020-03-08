@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import CustomerForm from '../../components/Customer/Form'
 import CustomerTable from '../../components/Customer/Table'
 import { FloatingAction, Modal } from '../../components/UI'
+import { createCustomer } from '../../store/actions/customerActions'
 
 class index extends Component {
   constructor(props) {
@@ -36,6 +37,8 @@ class index extends Component {
     this.setState({
       customerData
     })
+
+    this.props.createCustomer(customerData)
   }
 
   modalHandler = () => {
@@ -74,6 +77,12 @@ class index extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    createCustomer: customer => dispatch(createCustomer(customer))
+  }
+}
+
 const mapStateToProps = state => {
   return {
     customers: state.customer.customers,
@@ -81,4 +90,7 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(index)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(index)
