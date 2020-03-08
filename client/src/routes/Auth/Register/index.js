@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 
+import AuthRegisterContainer from '../../../containers/AuthContainer/Register'
+
 class Index extends Component {
   render() {
-    return (
-      <div>
-        <p>Register Page</p>
-      </div>
-    )
+    return <AuthRegisterContainer />
   }
 }
 

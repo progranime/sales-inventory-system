@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 
+import AuthLoginContainer from '../../../containers/AuthContainer/Login'
+
 class Index extends Component {
   render() {
-    return (
-      <div>
-        <p>Login Page</p>
-      </div>
-    )
+    return <AuthLoginContainer />
   }
 }
 

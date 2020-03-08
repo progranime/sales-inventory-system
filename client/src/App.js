@@ -20,7 +20,7 @@ function App() {
   return (
     <Router>
       <div className='App'>
-        <Navigation />
+        {/* <Navigation /> */}
         <Layout>
           <Switch>
             <Route path='/auth/register'>
