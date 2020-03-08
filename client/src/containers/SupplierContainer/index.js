@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { connect } from 'react-redux'
 
 import SupplierForm from '../../components/Supplier/Form'
 import SupplierTable from '../../components/Supplier/Table'
@@ -49,9 +50,10 @@ export class index extends Component {
   }
 
   render() {
+    const { suppliers, suppliersColumns } = this.props
     return (
       <div>
-        <SupplierTable />
+        <SupplierTable data={suppliers} columns={suppliersColumns} />
         <Modal
           isOpen={this.state.isModalOpen}
           toggle={this.modalHandler.bind(this)}
@@ -72,4 +74,11 @@ export class index extends Component {
   }
 }
 
-export default index
+const mapStateToProps = state => {
+  return {
+    suppliers: state.supplier.suppliers,
+    suppliersColumns: state.supplier.suppliersColumns
+  }
+}
+
+export default connect(mapStateToProps)(index)

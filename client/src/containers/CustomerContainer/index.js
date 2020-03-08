@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { connect } from 'react-redux'
 
 import CustomerForm from '../../components/Customer/Form'
 import CustomerTable from '../../components/Customer/Table'
@@ -46,9 +47,11 @@ class index extends Component {
   }
 
   render() {
+    const { customers, customersColumns } = this.props
+
     return (
       <div>
-        <CustomerTable />
+        <CustomerTable data={customers} columns={customersColumns} />
         <Modal
           isOpen={this.state.isModalOpen}
           toggle={this.modalHandler.bind(this)}
@@ -71,4 +74,11 @@ class index extends Component {
   }
 }
 
-export default index
+const mapStateToProps = state => {
+  return {
+    customers: state.customer.customers,
+    customersColumns: state.customer.customersColumns
+  }
+}
+
+export default connect(mapStateToProps)(index)
