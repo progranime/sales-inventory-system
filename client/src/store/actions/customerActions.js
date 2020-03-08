@@ -3,6 +3,7 @@ import { CREATE_CUSTOMER, CREATE_CUSTOMER_ERROR } from '../types'
 export const createCustomer = customer => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore()
+
     firestore
       .collection('customers')
       .add({

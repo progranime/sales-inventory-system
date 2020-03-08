@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
 
 import CustomerForm from '../../components/Customer/Form'
 import CustomerTable from '../../components/Customer/Table'
@@ -84,13 +86,17 @@ const mapDispatchToProps = dispatch => {
 }
 
 const mapStateToProps = state => {
+  console.log(state)
   return {
     customers: state.customer.customers,
     customersColumns: state.customer.customersColumns
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
+  firestoreConnect(['customers'])
 )(index)
