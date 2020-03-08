@@ -94,9 +94,9 @@ const mapStateToProps = state => {
 }
 
 export default compose(
+  firestoreConnect(['customers']),
   connect(
     mapStateToProps,
     mapDispatchToProps
-  ),
-  firestoreConnect(['customers'])
+  )
 )(index)
