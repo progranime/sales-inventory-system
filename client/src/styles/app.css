@@ -7202,8 +7202,15 @@ h1, h2, h3, h4, h5, h6 {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 350px;
-  border: 1px solid #b3b3b3;
-  padding: 15px; }
+  border: 1px solid #b3b3b3; }
+  .login-form__body,
+  .register-form__body {
+    padding: 15px; }
+  .login-form__footer,
+  .register-form__footer {
+    padding: 5px 15px;
+    background-color: #e9ecef;
+    text-align: right; }
 
 .layout {
   width: calc(100% - 200px);
