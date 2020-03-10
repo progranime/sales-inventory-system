@@ -8,95 +8,114 @@ import { compose } from 'redux'
 import CustomerForm from '../../components/Customer/Form'
 import CustomerTable from '../../components/Customer/Table'
 import { FloatingAction, Modal } from '../../components/UI'
-import { createCustomer } from '../../store/actions/customerActions'
+import {
+    getCustomers,
+    createCustomer
+} from '../../store/actions/customerActions'
+import { getGenders } from '../../store/actions/genderActions'
 
 class index extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      customerData: {
-        name: '',
-        contact: '',
-        address: '',
-        gender: 1
-      }
-    }
-    this.$name = React.createRef()
-    this.$contact = React.createRef()
-    this.$address = React.createRef()
-    this.$gender = React.createRef()
-  }
-
-  onSubmit = e => {
-    e.preventDefault()
-    let customerData = {
-      name: this.$name.current.value,
-      contact: this.$contact.current.value,
-      address: this.$address.current.value,
-      gender: this.$gender.current.value
+    constructor(props) {
+        super(props)
+        this.state = {
+            name: '',
+            contact: '',
+            address: '',
+            gender: 1
+        }
+        this.$name = React.createRef()
+        this.$contact = React.createRef()
+        this.$address = React.createRef()
+        this.$gender = React.createRef()
     }
 
-    this.setState({
-      customerData
-    })
+    onSubmit = e => {
+        e.preventDefault()
+        let customerData = {
+            name: this.$name.current.value,
+            contact: this.$contact.current.value,
+            address: this.$address.current.value,
+            gender: this.$gender.current.value
+        }
 
-    this.props.createCustomer(customerData)
-  }
+        this.setState(customerData)
 
-  modalHandler = () => {
-    this.setState(prevState => {
-      return {
-        isModalOpen: !prevState.isModalOpen
-      }
-    })
-  }
+        this.props.createCustomer(customerData)
 
-  render() {
-    const { customers, customersColumns } = this.props
+        // get the latest customers
+        this.props.getCustomers()
 
-    return (
-      <div>
-        <CustomerTable data={customers} columns={customersColumns} />
-        <Modal
-          isOpen={this.state.isModalOpen}
-          toggle={this.modalHandler.bind(this)}
-          title='Customer Details'
-        >
-          <CustomerForm
-            onSubmit={this.onSubmit.bind(this)}
-            refName={this.$name}
-            refContact={this.$contact}
-            refAddress={this.$address}
-            refGender={this.$gender}
-          />
-        </Modal>
+        this.setState(prevState => {
+            return {
+                isModalOpen: !prevState.isModalOpen
+            }
+        })
+    }
 
-        <FloatingAction onClick={this.modalHandler.bind(this)}>
-          <FontAwesomeIcon icon={faPlus} />
-        </FloatingAction>
-      </div>
-    )
-  }
+    modalHandler = () => {
+        this.setState(prevState => {
+            return {
+                isModalOpen: !prevState.isModalOpen
+            }
+        })
+    }
+
+    // lifecycle
+
+    componentDidMount() {
+        // get the latest customers
+        this.props.getCustomers()
+        // get the genders
+        this.props.getGenders()
+    }
+
+    render() {
+        const { customers, customersColumns, genders } = this.props
+
+        return (
+            <div>
+                <CustomerTable data={customers} columns={customersColumns} />
+                <Modal
+                    isOpen={this.state.isModalOpen}
+                    toggle={this.modalHandler}
+                    title='Customer Details'
+                >
+                    <CustomerForm
+                        onSubmit={this.onSubmit}
+                        refName={this.$name}
+                        refContact={this.$contact}
+                        refAddress={this.$address}
+                        refGender={this.$gender}
+                        toggle={this.modalHandler}
+                        genders={genders}
+                    />
+                </Modal>
+
+                <FloatingAction onClick={this.modalHandler}>
+                    <FontAwesomeIcon icon={faPlus} />
+                </FloatingAction>
+            </div>
+        )
+    }
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-    createCustomer: customer => dispatch(createCustomer(customer))
-  }
+    return {
+        getCustomers: () => dispatch(getCustomers()),
+        createCustomer: customer => dispatch(createCustomer(customer)),
+        getGenders: () => dispatch(getGenders())
+    }
 }
 
 const mapStateToProps = state => {
-  console.log(state)
-  return {
-    customers: state.customer.customers,
-    customersColumns: state.customer.customersColumns
-  }
+    return {
+        customers: state.customer.customers,
+        customersColumns: state.customer.customersColumns,
+        genders: state.gender.genders
+    }
 }
 
 export default compose(
-  firestoreConnect(['customers']),
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+    firestoreConnect(['customers']),
+    connect(mapStateToProps, mapDispatchToProps)
 )(index)
